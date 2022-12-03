@@ -15,6 +15,7 @@ import (
 	"github.com/hex-arch/internal/adapters/framework/right/db"
 	"github.com/hex-arch/internal/ports"
 	"google.golang.org/grpc"
+	"google.golang.org/grpc/credentials/insecure"
 	"google.golang.org/grpc/test/bufconn"
 )
 
@@ -63,7 +64,7 @@ func bufDailer(context.Context, string) (net.Conn, error) {
 }
 
 func getGRPCConnection(ctx context.Context, t *testing.T) *grpc.ClientConn {
-	conn, err := grpc.DialContext(ctx, "bufnet", grpc.WithContextDialer(bufDailer), grpc.WithInsecure())
+	conn, err := grpc.DialContext(ctx, "bufnet", grpc.WithContextDialer(bufDailer), grpc.WithTransportCredentials(insecure.NewCredentials()))
 	if err != nil {
 		t.Fatalf("failed to get connection: %v", err)
 	}
