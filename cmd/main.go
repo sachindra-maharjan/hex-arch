@@ -4,10 +4,9 @@ import (
 	"log"
 	"os"
 
-	gRPC "github.com/hex-arch/internal/adapters/framework/left/grpc"
-
 	"github.com/hex-arch/internal/adapters/app/api"
 	"github.com/hex-arch/internal/adapters/core/arithmetic"
+	gRPC "github.com/hex-arch/internal/adapters/framework/left/grpc"
 	"github.com/hex-arch/internal/adapters/framework/right/db"
 	"github.com/hex-arch/internal/ports"
 )

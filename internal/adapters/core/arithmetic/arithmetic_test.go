@@ -29,7 +29,7 @@ func TestSubstraction(t *testing.T) {
 
 func TestMultiplication(t *testing.T) {
 	arith := NewAdapter()
-	answer, err := arith.Addition(5, 2)
+	answer, err := arith.Multipication(5, 2)
 	if err != nil {
 		t.Fatalf("expected: %v, got: %v", nil, err)
 	}
@@ -40,7 +40,7 @@ func TestMultiplication(t *testing.T) {
 
 func TestDivision(t *testing.T) {
 	arith := NewAdapter()
-	answer, err := arith.Addition(4, 2)
+	answer, err := arith.Division(4, 2)
 	if err != nil {
 		t.Fatalf("expected: %v, got: %v", nil, err)
 	}

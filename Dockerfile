@@ -4,8 +4,7 @@ EXPOSE 9000
 
 RUN apk update \ 
     && apk add --no-cache \
-    mysql-client \
-    bulid-base
+    mysql-client build-base
 
 RUN mkdir /app
 WORKDIR /app
