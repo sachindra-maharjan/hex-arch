@@ -62,7 +62,7 @@ func bufDailer(context.Context, string) (net.Conn, error) {
 	return lis.Dial()
 }
 
-func gRPCConnection(ctx context.Context, t *testing.T) *grpc.ClientConn {
+func getGRPCConnection(ctx context.Context, t *testing.T) *grpc.ClientConn {
 	conn, err := grpc.DialContext(ctx, "bufnet", grpc.WithContextDialer(bufDailer), grpc.WithInsecure())
 	if err != nil {
 		t.Fatalf("failed to get connection: %v", err)
@@ -72,7 +72,7 @@ func gRPCConnection(ctx context.Context, t *testing.T) *grpc.ClientConn {
 
 func TestGetAddition(t *testing.T) {
 	ctx := context.Background()
-	conn := gRPCConnection(ctx, t)
+	conn := getGRPCConnection(ctx, t)
 	defer conn.Close()
 
 	client := pb.NewArithmeticServiceClient(conn)
@@ -92,7 +92,7 @@ func TestGetAddition(t *testing.T) {
 
 func TestSubstraction(t *testing.T) {
 	ctx := context.Background()
-	conn := gRPCConnection(ctx, t)
+	conn := getGRPCConnection(ctx, t)
 	defer conn.Close()
 
 	client := pb.NewArithmeticServiceClient(conn)
@@ -112,7 +112,7 @@ func TestSubstraction(t *testing.T) {
 
 func TestGetMultiplication(t *testing.T) {
 	ctx := context.Background()
-	conn := gRPCConnection(ctx, t)
+	conn := getGRPCConnection(ctx, t)
 	defer conn.Close()
 
 	client := pb.NewArithmeticServiceClient(conn)
@@ -132,7 +132,7 @@ func TestGetMultiplication(t *testing.T) {
 
 func TestGetDivision(t *testing.T) {
 	ctx := context.Background()
-	conn := gRPCConnection(ctx, t)
+	conn := getGRPCConnection(ctx, t)
 	defer conn.Close()
 
 	client := pb.NewArithmeticServiceClient(conn)
